@@ -16,6 +16,7 @@
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+		<link rel="stylesheet" href="css/custom.css">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -47,10 +48,67 @@
 					</p>
 				</section>
 				<section>
-					<div id="container1" style="width: 100%; height: 100%; margin: 0 auto"></div>
+					<h2>The Question</h2>
+						<p style="text-align:left" class="fragment">Shedding a light on the impact of chronic diseases on patient's daily lives
+						<span style="text-align:left" class="fragment">by analyzing self-help forums</span>
+						</p>
 				</section>
 				<section>
-					<div id="container2" style="width: 100%; height: 100%; margin: 0 auto"></div>
+					<h2>The Data</h2>
+					<p style="text-align:left">Forum data:</p>
+					<ul>
+						<li> Davita: 6501 Threads, 44139 posts, 5603 users </li>
+						<li> Renal Support Network: 3715 Threads, 17552 posts, 581 users</li>
+					</ul>
+					<img src="DavitaForumPicture.png" alt="Davita Forum Screenshot" style="width:304px;height:228px">
+					<img src="RenalForumPicture.png" alt="Renal Forum Screenshot" style="width:304px;height:228px">
+				</section>
+				<section>
+					<div id="container1"></div>
+				</section>
+				<section>
+					<h2>The Problem</h2>
+					<p class="fragment"> Big Data, Small Data </p>
+					<p class="fragment"> Solution: Deepening semantic knowledge</p>
+				</section>
+				<section>
+					<h2>Using an ontology: WordNet </h2>
+					<ul>
+						<li class="fragment">Lexical Database developed by George Miller and colleagues at Princeton University over last two decades</li>
+						<li class="fragment">Organized around the notion of a synset: set of synonyms which represents a single concept.</li>
+						<li class="fragment">Contains 117 000 synsets which are linked to each other by  a small number of “conceptual relations”</li>
+					</ul>
+					<p style="font-size: 0.5em;text-align:left">Fellbaum, Christiane (2005). WordNet and wordnets. In: Brown, Keith et al. (eds.), Encyclopedia of Language and Linguistics, Second Edition, Oxford: Elsevier, 665-670</p>
+				</section>
+				<section>
+					<h2>What is a synset, again?</h2>
+					<p class="fragment">{dollar, buck, clam}</p>
+				</section>
+				<section>
+					<h2>WordNet’s Lexical Hierarchy</h2>
+					<p style="text-align:left" class="fragment">Contains hierarchy of concepts, ranging from very general ({entity}, {state}) to moderately abstract ({person, individual}) to very specific ({doctor, doc, physician}).</p>
+					<p style="text-align:left" class="fragment">Some terminology: For a given synset, its. . .
+						<ul class="fragment">
+							<li>hypernyms are the synsets that are more general</li>
+							<li>hyponyms are the synsets that are more specific</li>
+						</ul>
+					</p>
+					<p style="text-align:left" class="fragment">Hyponyms have an “Is-A" relationship to their hypernyms.</p>
+				</section>
+				<section>
+					<h2> From Words to Synsets </h2>
+				</section>
+				<section>
+					<img src="wordnet-hierarchy.png" alt="Renal Forum Screenshot" style="width:100%; height:100%; border:0px">
+				</section>
+				<section>
+					<img src="wordnet-hierarchy_thresholded.png" alt="Renal Forum Screenshot" style="width:100%; height:100%; border:0px">
+				</section>
+				<section>
+					<h2>Part Two: Results</h2>
+				</section>
+				<section>
+					<div id="container2"></div>
 				</section>
 				<section>
 					<h2>Synset Co-Occurence</h2>
@@ -61,10 +119,104 @@
 					</ul>
 					<p style="text-align:left">Pearson Correlation / Phi Coefficient:</p>
 					<ul>
-					  <li>$\rho_{X,Y} = \frac{\mathbb{E}\left[ XY \right] - \mathbb{E}\left[ X \right] \mathbb{E}\left[Y\right]}{\sqrt{\mathbb{E}\left[ X \right]  \mathbb{E}\left[ Y \right]} }
+					  <li>$\rho_{X,Y} = \frac{\mathbb{E}\left[ XY \right] - \mathbb{E}\left[ X \right] \mathbb{E}\left[Y\right]}{\sqrt{\mathbb{V}\left[ X \right]  \mathbb{V}\left[ Y \right]} }
 						\implies \hat \rho_{X,Y} = \frac{n_{11} n_{00} - n_{10} n_{01}}{\sqrt{n_{1\cdot}n_{0\cdot}n_{\cdot1}n_{\cdot 0}}}
 						$</li>
 					</ul>
+				</section>
+				<section>
+					<h2> The Lab's Verdict </h2>
+					<h3>{Lab, Laboratory, Research Lab}</h3>
+				</section>
+				<section>
+					<h2>Correlations</h2>
+				<table style="font-size:0.5em">
+					<tr> <th> Synset </th> <th> $\rho$ </th> <th> 95% CI </th> </tr>
+					<tr> <td> bun </td><td> 0.190 </td> <td> [0.156, 0.223] </td> </tr>
+					<tr> <td> attempt,effort,endeavor </td><td> 0.167 </td> <td> [0.133, 0.201] </td> </tr>
+					<tr> <td> normal </td><td> 0.158 </td> <td> [0.124, 0.192] </td> </tr>
+					<tr> <td> pee,piddle,piss </td><td> 0.132 </td> <td> [0.098, 0.166] </td> </tr>
+					<tr> <td> hebdomad,week </td><td> 0.119 </td> <td> [0.084, 0.153] </td> </tr>
+					<tr> <td> med </td><td> 0.118 </td> <td> [0.084, 0.153] </td> </tr>
+					<tr> <td> echography,sonography,ultrasonography </td><td> 0.110 </td> <td> [0.075, 0.144] </td> </tr>
+					<tr> <td> numbers </td><td> 0.104 </td> <td> [0.069, 0.138] </td> </tr>
+					<tr> <td> bad </td><td> 0.101 </td> <td> [0.066, 0.135] </td> </tr>
+					<tr> <td> high </td><td> 0.099 </td> <td> [0.065, 0.134] </td> </tr>
+					<tr> <td> evince,express,show </td><td> 0.098 </td> <td> [0.063, 0.132] </td> </tr>
+					<tr> <td> diagnosing,diagnosis </td><td> 0.097 </td> <td> [0.063, 0.132] </td> </tr>
+			</table>
+				</section>
+				<section>
+					<blockquote>
+						"My PCP sent me the lab tests in the mail. He didn't want to discuss any of that but did recommend a
+						nephrologist and gave me the gear for a 24 hour urine test"
+					</blockquote>
+				</section>
+				<section>
+					<h2> Scared To Death </h2>
+					<h3>{fear, fearfulness, fright}</h3>
+				</section>
+				<section>
+					<h2>Correlations</h2>
+					<table style="font-size:0.75em">
+						<tr><th> Synset</th><th>$\rho$</th><th>95% CI</th> </tr>
+						<tr><td>aid,attention,care</td><td> 0.107 </td><td>[0.072, 0.141]</td></tr>
+						<tr><td>hospital,infirmary </td><td>0.095</td> <td>[0.060, 0.129]</td> </tr>
+						<tr><td>lover </td><td>0.093</td> <td>[0.059, 0.128]</td></tr>
+						<tr><td>ma,mama,mamma </td><td>0.089</td> <td>[0.054, 0.123]</td></tr>
+						<tr><td>abode,domicile,home </td><td>0.087</td> <td>[0.053, 0.122]</td></tr>
+						<tr><td>dialysis </td><td>0.086</td> <td>[0.051, 0.120]</td></tr>
+						<tr><td>age,long time,years </td><td>0.084</td> <td>[0.050, 0.119]</td></tr>
+						<tr><td>begin,commence,get </td><td>0.082</td> <td>[0.047, 0.116]</td></tr>
+					</table>
+				</section>
+				<section>
+					<blockquote>
+						"we have fear of the unknown (my dad, mom and I.
+						All that said, we all dread dialysis"
+					</blockquote>
+					<blockquote>
+						"I am in a relationship with someone who is on dialysis, it's really new to me and I am scared to death. I fear
+						waking up and the love of my life will be gone"
+					</blockquote>
+				</section>
+				<section>
+					<h2>Taking Care of Yourself</h2>
+					<h3>{Diet}</h3>
+				</section>
+				<section>
+					<h3>Correlations</h3>
+					<table style="font-size:0.5em">
+						<tr> <th> Synset </th> <th> $\rho$ </th><th>95% CI </th></tr>
+						<tr> <td>low </td><td>0.297</td> <td>[0.265, 0.329]</td> </tr>
+						<tr> <td>atomic number 19,k,potassium</td><td>0.294</td> <td>[0.262, 0.326]</td> </tr>
+						<tr> <td>eat</td><td>0.244</td> <td>[0.211, 0.276]</td> </tr>
+						<tr> <td>atomic number 11,na,sodium</td><td>0.241</td> <td>[0.208, 0.274]</td> </tr>
+						<tr> <td>specialiser,specialist,specializer</td><td>0.224</td> <td>[0.191, 0.257]</td> </tr>
+						<tr> <td>kidney </td><td>0.219</td> <td>[0.186, 0.252]</td> </tr>
+						<tr> <td>dietician,dietitian </td><td>0.204</td> <td>[0.170, 0.237]</td> </tr>
+						<tr> <td>atomic number 15,p,phosphorus</td><td>0.203</td> <td>[0.170, 0.236]</td> </tr>
+						<tr> <td>high </td><td>0.203</td> <td>[0.170, 0.237]</td> </tr>
+						<tr> <td>nephritic,renal </td><td>0.202</td> <td>[0.168, 0.235]</td> </tr>
+						<tr> <td>formula,recipe </td><td>0.192</td> <td>[0.158, 0.225]</td> </tr>
+						<tr> <td>diabetic </td><td>0.176</td> <td>[0.142, 0.210]</td> </tr>
+						<tr> <td>good </td><td>0.150</td> <td>[0.116, 0.184]</td> </tr>
+						<tr> <td>cook </td><td>0.143</td> <td>[0.109, 0.177]</td> </tr>
+						<tr> <td>diagnose,name </td><td>0.141</td> <td>[0.106, 0.174]</td> </tr>
+						<tr> <td>weight,weight unit </td><td>0.136</td> <td>[0.101, 0.170]</td> </tr>
+						<tr> <td>lose </td><td>0.119</td> <td>[0.085, 0.153]</td> </tr>
+				</table>
+				</section>
+				<section>
+					<blockquote>
+						"Do the dieticians actually taste some of these recipes they say we can eat. It's all about the numbers (...), but I have been on dialysis only 6 weeks and its ridiculous to think they try this stuff"
+					</blockquote>
+				</section>
+				<section>
+					<h2>Recommendation:</h2>
+					<p>
+						Empowerment through particaption and concrete recipes for everyday life
+					</p>
 				</section>
 			</div>
 
